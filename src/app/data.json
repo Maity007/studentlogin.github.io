@@ -1,0 +1,20 @@
+{
+  "user_data": [
+    {
+      "stdId": "101",
+      "stdName": "Bishal Maity",
+      "stdEmail": "bm@mail.com",
+      "stdPhone": "9091473546",
+      "stdPass": "B12345678",
+      "id": 1
+    },
+    {
+      "stdId": "102",
+      "stdName": "Abhilash Chakraborty",
+      "stdEmail": "abhilash@mail.com",
+      "stdPhone": "9638527410",
+      "stdPass": "A12345678",
+      "id": 2
+    }
+  ]
+}

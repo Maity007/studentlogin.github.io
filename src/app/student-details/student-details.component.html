@@ -1,0 +1,130 @@
+<app-navabar></app-navabar>
+<div class="container">
+  <!-- <form #studentCode="ngForm" (ngSubmit)="fetchStudentDetails(studentCode)" *ngIf="display1">
+    <div class="form-group">
+      <label for="id">Student ID:</label>
+      <input type="text" class="form-control" min="4" pattern="[0-9]+$" #studcode="ngModel" name="studcode"
+        placeholder="Enter student code" required [(ngModel)]="stdId" />
+      <span *ngIf="studcode.invalid && studcode.touched" style="color: red;">Please enter a valid input</span>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="studentCode.invalid">Get Student</button>
+  </form> -->
+
+  <div class="container mt-5" *ngIf="display1">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4" style="margin: 10px; padding:10px;">
+        <div class="card border-0 shadow-lg" >
+          <div class="card-body">
+            <h3 class="card-title mb-4">Login</h3><hr>
+            <form #studentCode="ngForm" (ngSubmit)="fetchStudentDetails(studentCode)" >
+              <div class="mb-3">
+                <label class="form-label">Student Code</label>
+                <input type="text" class="form-control" name="studcode" #studcode="ngModel" placeholder="Enter your student code" required [(ngModel)]="stdId">
+                <span *ngIf="studcode.invalid && studcode.touched" style="color: red;">Please enter a valid input</span>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="studpass" #studpass="ngModel" placeholder="Enter your password" required [(ngModel)]="stdPass">
+                <span *ngIf="studpass.invalid && studpass.touched" style="color: red;">Please enter a valid input</span>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-success" [disabled]="studentCode.invalid">Login</button>
+              </div>
+            </form>
+            <div class="text-center mt-3">
+              <a href="#" class="text-decoration-none">New User?</a>
+              <a href="#" class="text-decoration-none">Forgot password?</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" *ngIf="display">
+    <div class="container mt-4">
+      <h2 class="text-center">Student Details</h2>
+      <button class="btn btn-outline-dark btn-danger ml-auto" type="submit" (click)="logout()">Logout</button>
+      <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th class="text-center">Student Code</th>
+            <th class="text-center">Student Name</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Mobile</th>
+            <th class="text-center">Password</th>
+            <th class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center">{{ userList[index].stdId }}</td>
+            <td class="text-center">{{ userList[index].stdName }}</td>
+            <td class="text-center">{{ userList[index].stdEmail }}</td>
+            <td class="text-center">{{ userList[index].stdPhone }}</td>
+            <td class="text-center">{{ userList[index].stdPass }}</td>
+            <td class="text-center">
+              <button type="button" (click)="sendtoUpdate(userList[index])">Edit</button>&nbsp;
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="container" *ngIf="display2">
+    <div class="row justify-content-center">
+      <div class="col-md-8" style="margin: 10px; padding: 10px; width: 100%">
+        <div class="card border-0 shadow-lg">
+          <div class="card-body">
+            <div class="container mt-4">
+              <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <div class="card">
+                    <div class="card-header">
+                      <h2 class="mt-4">Student Update</h2>
+                    </div>
+
+                    <form style="margin: 10px; padding: 10px; width: 100%" #useredit = "ngForm" (ngSubmit) = "Edit(useredit.value)">
+                      <div class="form-group">
+                        <label for="id">ID</label>
+                        <input type="text" class="form-control" name="c1" #c1="ngModel" placeholder="Enter your Id" ngModel required [(ngModel)]="stdId" />
+                        <span *ngIf="c1.invalid && c1.touched" style="color: red">Please enter a valid input</span>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" class="form-control" name="c2" #c2="ngModel" placeholder="Enter your full name" ngModel required [(ngModel)]="stdName" />
+                        <span *ngIf="c2.invalid && c2.touched" style="color: red">Please enter a valid input</span>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="c3" #c3="ngModel" placeholder="Enter your email address" ngModel required [(ngModel)]="stdEmail" />
+                        <span *ngIf="c3.invalid && c3.touched" style="color: red">Please enter a valid input</span>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" class="form-control" name="c4" #c4="ngModel" maxlength="10" pattern="[0-9]+$" placeholder="Enter your phone number" ngModel required [(ngModel)]="stdPhone" />
+                        <span *ngIf="c4.invalid && c4.touched" style="color: red">Please enter a valid input</span>
+                      </div>
+                      <div class="form-group">
+                        <label for="pass">Password</label>
+                        <input type="password" class="form-control" name="c5" #c5="ngModel" placeholder="Enter your Password" ngModel required [(ngModel)]="stdPass" />
+                        <span *ngIf="c5.invalid && c5.touched" style="color: red">Please enter a valid input</span>
+                      </div>
+                      <br />
+
+                      <button type="submit" class="btn btn-primary" [disabled]="useredit.invalid">Update</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

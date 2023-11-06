@@ -1,0 +1,39 @@
+<app-navabar></app-navabar>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8" style="margin: 10px; padding: 10px; width: auto;">
+            <div class="card border-0 shadow-lg">
+                <div class="card-body">
+                    <div class="card-header">
+                        <a routerLink="/create"><button class="button-green float-end">Student Registration</button></a>
+                        <h3 class="card-title mb-4">Student List</h3>
+                    </div>
+                    <form ></form>
+                    <table class="table table-bordered table-striped" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody> 
+                            <tr *ngFor="let stu of userList">
+                                <td>{{stu.id}}</td>
+                                <td>{{stu.stdName}}</td>
+                                <td>{{stu.stdEmail}}</td>
+                                <td>{{stu.stdPhone}}</td>
+                                <button type="button" routerLink="/details" class="btn btn-info text-center">View</button>
+                                <button type="button" (click)="delete_user(stu.id)">Delete</button>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
